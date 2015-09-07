@@ -22,7 +22,6 @@ echo '</font> </td>'
 echo '</tr>'
 echo '</table>'
 
-
   echo "<form method=GET action=\"${SCRIPT}\">"\
        '<table nowrap><tr><td>Input</TD><TD><input type="text" name="val_x" size=12></td></tr></table>'
 
@@ -42,20 +41,13 @@ if [ "$REQUEST_METHOD" != "GET" ]; then
 	exit 1
 fi
 
-
 if [ -z "$QUERY_STRING" ]; then
 	exit 0
 else
-
 	saveIFS=$IFS
 	IFS='=&'
 	parm=($QUERY_STRING)
 	IFS=$saveIFS
-
-	for ((i=0; i<${#parm[@]}; i+=2))
-	do
-		declare var_${parm[i]}=${parm[i+1]}
-	done
 	
      echo "Input value:" ${parm[1]}
 	 echo '<br>'
